@@ -139,11 +139,6 @@
     @apply border-quiz-incorrect bg-quiz-incorrect bg-opacity-5;
   }
 
-  /* Mobile Menu Styles */
-  .mobile-menu-item {
-    @apply flex items-center px-4 py-3 transition-colors duration-200 hover:bg-gray-100 rounded-lg;
-  }
-
   /* Page transitions */
   .page-transition-enter {
     @apply opacity-0;
