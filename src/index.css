@@ -1,10 +1,13 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 40% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -13,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 221.2 83% 53.3%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -22,7 +25,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 250 95% 76.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -30,24 +33,17 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 221.2 83% 53.3%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,6 +92,72 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Apple-style focus styles */
+  :focus {
+    @apply outline-none ring-2 ring-quiz-primary ring-opacity-50;
+  }
+
+  /* Smooth transitions */
+  a, button, input, select, textarea {
+    @apply transition-all duration-200;
+  }
+
+  /* Card styling */
+  .quiz-card {
+    @apply bg-white shadow-sm border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-md;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  /* Button styling */
+  .button-primary {
+    @apply bg-quiz-primary text-white rounded-full px-6 py-3 font-medium transition-all duration-300 hover:bg-opacity-90 active:scale-95;
+  }
+
+  .button-secondary {
+    @apply bg-quiz-secondary text-quiz-dark rounded-full px-6 py-3 font-medium transition-all duration-300 hover:bg-opacity-90 active:scale-95;
+  }
+
+  /* Option styling */
+  .quiz-option {
+    @apply border border-gray-200 rounded-xl p-4 mb-3 cursor-pointer transition-all duration-200 hover:border-quiz-primary;
+  }
+
+  .quiz-option.selected {
+    @apply border-quiz-primary bg-quiz-primary bg-opacity-5;
+  }
+
+  .quiz-option.correct {
+    @apply border-quiz-correct bg-quiz-correct bg-opacity-5;
+  }
+
+  .quiz-option.incorrect {
+    @apply border-quiz-incorrect bg-quiz-incorrect bg-opacity-5;
+  }
+
+  /* Page transitions */
+  .page-transition-enter {
+    @apply opacity-0;
+  }
+  
+  .page-transition-enter-active {
+    @apply opacity-100 transition-opacity duration-300;
+  }
+  
+  .page-transition-exit {
+    @apply opacity-100;
+  }
+  
+  .page-transition-exit-active {
+    @apply opacity-0 transition-opacity duration-300;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white bg-opacity-80 backdrop-blur-md border border-white border-opacity-40;
   }
 }
