@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ProgressBar from "./ProgressBar";
 import { Question, quizzes } from "../data/quizData";
+import { Button } from "./ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "./ui/dialog";
+import { ArrowLeft, X } from "lucide-react";
 
 const QuizInterface: React.FC = () => {
   const { quizId } = useParams<{ quizId: string }>();
@@ -15,6 +18,7 @@ const QuizInterface: React.FC = () => {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [timeLeft, setTimeLeft] = useState<number>(quiz ? quiz.timeLimit * 60 : 0);
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [showCancelDialog, setShowCancelDialog] = useState<boolean>(false);
   
   useEffect(() => {
     if (!quiz) {
@@ -96,6 +100,14 @@ const QuizInterface: React.FC = () => {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
   
+  const handleCancel = () => {
+    setShowCancelDialog(true);
+  };
+  
+  const confirmCancel = () => {
+    navigate("/");
+  };
+  
   if (!quiz) return null;
   
   const question: Question = quiz.questions[currentQuestion];
@@ -106,7 +118,16 @@ const QuizInterface: React.FC = () => {
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
           {/* Header */}
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-xl font-bold">{quiz.title}</h1>
+            <div className="flex items-center">
+              <Button 
+                variant="ghost" 
+                className="mr-2 p-1 h-9 w-9" 
+                onClick={handleCancel}
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </Button>
+              <h1 className="text-xl font-bold">{quiz.title}</h1>
+            </div>
             <div className="flex items-center px-4 py-2 bg-quiz-secondary rounded-full text-quiz-primary font-medium">
               <svg className="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
@@ -201,6 +222,26 @@ const QuizInterface: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Cancel Confirmation Dialog */}
+      <Dialog open={showCancelDialog} onOpenChange={setShowCancelDialog}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Cancel Quiz</DialogTitle>
+            <DialogDescription>
+              Are you sure you want to cancel this quiz? Your progress will not be saved.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="flex space-x-2 pt-4">
+            <Button variant="outline" onClick={() => setShowCancelDialog(false)}>
+              Continue Quiz
+            </Button>
+            <Button variant="destructive" onClick={confirmCancel}>
+              Exit Quiz
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
