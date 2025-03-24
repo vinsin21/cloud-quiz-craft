@@ -9,6 +9,8 @@ import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
 import Review from "./pages/Review";
 import NotFound from "./pages/NotFound";
+import Quizzes from "./pages/Quizzes";
+import Navbar from "./components/Navbar";
 
 const queryClient = new QueryClient();
 
@@ -18,8 +20,10 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/quizzes" element={<Quizzes />} />
           <Route path="/quiz/:quizId" element={<Quiz />} />
           <Route path="/results/:quizId" element={<Results />} />
           <Route path="/review/:quizId" element={<Review />} />
