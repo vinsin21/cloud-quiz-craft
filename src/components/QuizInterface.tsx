@@ -5,11 +5,13 @@ import ProgressBar from "./ProgressBar";
 import { Question, quizzes } from "../data/quizData";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "./ui/dialog";
-import { ArrowLeft, X } from "lucide-react";
+import { ArrowLeft, X, CheckCircle2, XCircle } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const QuizInterface: React.FC = () => {
   const { quizId } = useParams<{ quizId: string }>();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
   
   const quiz = quizzes.find(q => q.id === quizId);
   
@@ -19,6 +21,7 @@ const QuizInterface: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<number>(quiz ? quiz.timeLimit * 60 : 0);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [showCancelDialog, setShowCancelDialog] = useState<boolean>(false);
+  const [showAnswer, setShowAnswer] = useState<boolean>(false);
   
   useEffect(() => {
     if (!quiz) {
@@ -45,12 +48,14 @@ const QuizInterface: React.FC = () => {
     if (submitted) return;
     setSelectedOption(optionId);
     setAnswers(prev => ({ ...prev, [currentQuestion]: optionId }));
+    setShowAnswer(true);
   };
   
   const handleNext = () => {
     if (currentQuestion < (quiz?.questions.length || 0) - 1) {
       setCurrentQuestion(prev => prev + 1);
       setSelectedOption(answers[currentQuestion + 1] || null);
+      setShowAnswer(false);
     }
   };
   
@@ -58,7 +63,18 @@ const QuizInterface: React.FC = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(prev => prev - 1);
       setSelectedOption(answers[currentQuestion - 1] || null);
+      setShowAnswer(!!answers[currentQuestion - 1]);
     }
+  };
+  
+  const isCorrectAnswer = (optionId: string): boolean => {
+    if (!quiz) return false;
+    const question = quiz.questions[currentQuestion];
+    
+    if (question.correctAnswer.includes(',')) {
+      return question.correctAnswer.split(',').includes(optionId);
+    }
+    return question.correctAnswer === optionId;
   };
   
   const handleSubmit = () => {
@@ -113,23 +129,23 @@ const QuizInterface: React.FC = () => {
   const question: Question = quiz.questions[currentQuestion];
   
   return (
-    <div className="min-h-screen py-10 px-4 bg-gradient-to-b from-white to-quiz-secondary/20">
+    <div className="min-h-screen py-6 md:py-10 px-3 md:px-4 bg-gradient-to-b from-white to-quiz-secondary/20">
       <div className="container mx-auto max-w-3xl">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 md:p-6 lg:p-8">
           {/* Header */}
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex justify-between items-center mb-4 md:mb-6">
             <div className="flex items-center">
               <Button 
                 variant="ghost" 
-                className="mr-2 p-1 h-9 w-9" 
+                className="mr-1 md:mr-2 p-0 md:p-1 h-8 w-8 md:h-9 md:w-9" 
                 onClick={handleCancel}
               >
-                <ArrowLeft className="h-5 w-5" />
+                <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
               </Button>
-              <h1 className="text-xl font-bold">{quiz.title}</h1>
+              <h1 className="text-lg md:text-xl font-bold truncate">{quiz.title}</h1>
             </div>
-            <div className="flex items-center px-4 py-2 bg-quiz-secondary rounded-full text-quiz-primary font-medium">
-              <svg className="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <div className="flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-quiz-secondary rounded-full text-quiz-primary text-sm md:text-base font-medium">
+              <svg className="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
@@ -141,28 +157,36 @@ const QuizInterface: React.FC = () => {
           <ProgressBar current={currentQuestion + 1} total={quiz.questions.length} />
           
           {/* Question Content */}
-          <div className="mb-6 animate-fade-in">
-            <h2 className="text-lg font-medium mb-4">
+          <div className="mb-4 md:mb-6 animate-fade-in">
+            <h2 className="text-base md:text-lg font-medium mb-3 md:mb-4">
               {currentQuestion + 1}. {question.text}
             </h2>
             
-            <div className="space-y-3">
+            <div className="space-y-2 md:space-y-3">
               {question.options.map(option => (
                 <div 
                   key={option.id}
-                  className={`quiz-option ${selectedOption === option.id ? 'selected' : ''}`}
+                  className={`quiz-option ${selectedOption === option.id ? 'selected' : ''} 
+                    ${showAnswer && isCorrectAnswer(option.id) ? 'correct' : ''}
+                    ${showAnswer && selectedOption === option.id && !isCorrectAnswer(option.id) ? 'incorrect' : ''}`}
                   onClick={() => handleOptionSelect(option.id)}
                 >
                   <div className="flex items-start">
                     <div className="flex-shrink-0 h-5 w-5 mt-0.5">
-                      <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center ${selectedOption === option.id ? 'border-quiz-primary' : 'border-gray-300'}`}>
-                        {selectedOption === option.id && (
-                          <div className="w-3 h-3 bg-quiz-primary rounded-full" />
-                        )}
-                      </div>
+                      {showAnswer && isCorrectAnswer(option.id) ? (
+                        <CheckCircle2 className="h-5 w-5 text-quiz-correct" />
+                      ) : showAnswer && selectedOption === option.id && !isCorrectAnswer(option.id) ? (
+                        <XCircle className="h-5 w-5 text-quiz-incorrect" />
+                      ) : (
+                        <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center ${selectedOption === option.id ? 'border-quiz-primary' : 'border-gray-300'}`}>
+                          {selectedOption === option.id && (
+                            <div className="w-3 h-3 bg-quiz-primary rounded-full" />
+                          )}
+                        </div>
+                      )}
                     </div>
-                    <div className="ml-3">
-                      <span className="text-base">{option.id}. {option.text}</span>
+                    <div className="ml-3 flex-1">
+                      <span className="text-sm md:text-base">{option.id}. {option.text}</span>
                     </div>
                   </div>
                 </div>
@@ -170,12 +194,22 @@ const QuizInterface: React.FC = () => {
             </div>
           </div>
           
+          {/* Explanation when answer is shown */}
+          {showAnswer && (
+            <div className="mt-4 mb-6 p-3 md:p-4 bg-quiz-secondary/50 rounded-xl text-sm md:text-base">
+              <div className="font-medium mb-1 md:mb-2">Explanation:</div>
+              <div className="text-quiz-dark text-xs md:text-sm">
+                {question.explanation || "No explanation provided for this question."}
+              </div>
+            </div>
+          )}
+          
           {/* Navigation Buttons */}
-          <div className="flex justify-between mt-8">
+          <div className="flex justify-between mt-6 md:mt-8">
             <button 
               onClick={handlePrev}
               disabled={currentQuestion === 0}
-              className={`px-6 py-2.5 rounded-lg font-medium transition-all duration-200 ${currentQuestion === 0 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-quiz-secondary text-quiz-dark hover:bg-quiz-secondary/80'}`}
+              className={`px-4 md:px-6 py-2 md:py-2.5 text-sm md:text-base rounded-lg font-medium transition-all duration-200 ${currentQuestion === 0 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-quiz-secondary text-quiz-dark hover:bg-quiz-secondary/80'}`}
             >
               Previous
             </button>
@@ -183,14 +217,14 @@ const QuizInterface: React.FC = () => {
             {currentQuestion < quiz.questions.length - 1 ? (
               <button 
                 onClick={handleNext}
-                className="bg-quiz-primary text-white px-6 py-2.5 rounded-lg font-medium hover:bg-quiz-primary/90 transition-all duration-200"
+                className="bg-quiz-primary text-white px-4 md:px-6 py-2 md:py-2.5 text-sm md:text-base rounded-lg font-medium hover:bg-quiz-primary/90 transition-all duration-200"
               >
                 Next
               </button>
             ) : (
               <button 
                 onClick={handleSubmit}
-                className="bg-quiz-primary text-white px-6 py-2.5 rounded-lg font-medium hover:bg-quiz-primary/90 transition-all duration-200"
+                className="bg-quiz-primary text-white px-4 md:px-6 py-2 md:py-2.5 text-sm md:text-base rounded-lg font-medium hover:bg-quiz-primary/90 transition-all duration-200"
               >
                 Submit Quiz
               </button>
@@ -198,27 +232,52 @@ const QuizInterface: React.FC = () => {
           </div>
           
           {/* Question Navigator */}
-          <div className="mt-8 pt-6 border-t border-gray-100">
-            <div className="flex flex-wrap gap-2">
-              {quiz.questions.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setCurrentQuestion(index);
-                    setSelectedOption(answers[index] || null);
-                  }}
-                  className={`w-8 h-8 flex items-center justify-center rounded-full text-sm transition-all duration-200 ${
-                    currentQuestion === index 
-                      ? 'bg-quiz-primary text-white' 
-                      : answers[index] 
-                        ? 'bg-quiz-secondary text-quiz-primary' 
-                        : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                  }`}
-                >
-                  {index + 1}
-                </button>
-              ))}
-            </div>
+          <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-gray-100">
+            {!isMobile ? (
+              <div className="flex flex-wrap gap-2">
+                {quiz.questions.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentQuestion(index);
+                      setSelectedOption(answers[index] || null);
+                      setShowAnswer(!!answers[index]);
+                    }}
+                    className={`w-8 h-8 flex items-center justify-center rounded-full text-sm transition-all duration-200 ${
+                      currentQuestion === index 
+                        ? 'bg-quiz-primary text-white' 
+                        : answers[index] 
+                          ? 'bg-quiz-secondary text-quiz-primary' 
+                          : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                    }`}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="flex overflow-x-auto pb-2 hide-scrollbar gap-1.5">
+                {quiz.questions.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentQuestion(index);
+                      setSelectedOption(answers[index] || null);
+                      setShowAnswer(!!answers[index]);
+                    }}
+                    className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full text-xs transition-all duration-200 ${
+                      currentQuestion === index 
+                        ? 'bg-quiz-primary text-white' 
+                        : answers[index] 
+                          ? 'bg-quiz-secondary text-quiz-primary' 
+                          : 'bg-gray-100 text-gray-500 active:bg-gray-200'
+                    }`}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

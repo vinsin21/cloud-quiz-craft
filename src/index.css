@@ -124,7 +124,7 @@
 
   /* Option styling */
   .quiz-option {
-    @apply border border-gray-200 rounded-xl p-4 mb-3 cursor-pointer transition-all duration-200 hover:border-quiz-primary;
+    @apply border border-gray-200 rounded-xl p-3 md:p-4 mb-3 cursor-pointer transition-all duration-200 hover:border-quiz-primary;
   }
 
   .quiz-option.selected {
@@ -172,6 +172,16 @@
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
   }
+
+  /* Hide scrollbar for mobile */
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
   
   /* Animations */
   @keyframes float {
@@ -189,4 +199,17 @@
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
+
+  /* Tap highlight removal for better mobile experience */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Improve touch target sizes for mobile */
+  @media (max-width: 640px) {
+    button, a {
+      @apply min-h-[44px] min-w-[44px];
+    }
+  }
 }
+
