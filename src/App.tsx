@@ -20,16 +20,20 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/quizzes" element={<Quizzes />} />
-          <Route path="/quiz/:quizId" element={<Quiz />} />
-          <Route path="/results/:quizId" element={<Results />} />
-          <Route path="/review/:quizId" element={<Review />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="flex-1 pt-16"> {/* Added padding-top to account for fixed navbar */}
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/quizzes" element={<Quizzes />} />
+              <Route path="/quiz/:quizId" element={<Quiz />} />
+              <Route path="/results/:quizId" element={<Results />} />
+              <Route path="/review/:quizId" element={<Review />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

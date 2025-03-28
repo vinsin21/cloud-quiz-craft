@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -186,18 +185,69 @@
   /* Animations */
   @keyframes float {
     0% {
-      transform: translateY(0px);
+      transform: translateY(0px) rotate(0deg);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-10px) rotate(5deg);
     }
     100% {
-      transform: translateY(0px);
+      transform: translateY(0px) rotate(0deg);
     }
   }
   
   .animate-float {
     animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+
+  @keyframes bounce-sm {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .animate-bounce-sm {
+    animation: bounce-sm 2s ease-in-out infinite;
+  }
+
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
   }
 
   /* Tap highlight removal for better mobile experience */
@@ -211,5 +261,30 @@
       @apply min-h-[44px] min-w-[44px];
     }
   }
-}
 
+  /* Navbar animations */
+  .nav-link {
+    @apply relative overflow-hidden;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-full h-0.5 bg-quiz-primary transform scale-x-0 origin-bottom-right transition-transform duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply transform scale-x-100 origin-bottom-left;
+  }
+
+  /* Button hover animations */
+  .btn-hover-effect {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-hover-effect::before {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-white opacity-0 transform scale-x-0 origin-left transition-transform duration-300;
+  }
+
+  .btn-hover-effect:hover::before {
+    @apply transform scale-x-100 opacity-20;
+  }
+}
