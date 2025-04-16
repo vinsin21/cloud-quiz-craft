@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ProgressBar from "./ProgressBar";
 import { Question, quizzes } from "../data/quizData";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "./ui/dialog";
-import { ArrowLeft, X, CheckCircle2, XCircle } from "lucide-react";
+import { ArrowLeft, X, CheckCircle2, XCircle, Clock } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const QuizInterface: React.FC = () => {
@@ -129,36 +128,30 @@ const QuizInterface: React.FC = () => {
   const question: Question = quiz.questions[currentQuestion];
   
   return (
-    <div className="min-h-screen py-6 md:py-10 px-3 md:px-4 bg-gradient-to-b from-white to-quiz-secondary/20">
+    <div className="min-h-screen py-4 sm:py-6 md:py-10 px-2 sm:px-3 md:px-4 bg-gradient-to-b from-white to-quiz-secondary/20">
       <div className="container mx-auto max-w-3xl">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 md:p-6 lg:p-8">
-          {/* Header */}
-          <div className="flex justify-between items-center mb-4 md:mb-6">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 p-3 sm:p-4 md:p-6 lg:p-8">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 sm:mb-4 md:mb-6 space-y-2 sm:space-y-0">
             <div className="flex items-center">
               <Button 
                 variant="ghost" 
-                className="mr-1 md:mr-2 p-0 md:p-1 h-8 w-8 md:h-9 md:w-9" 
+                className="mr-1 p-0 h-8 w-8" 
                 onClick={handleCancel}
               >
-                <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
+                <ArrowLeft className="h-4 w-4" />
               </Button>
-              <h1 className="text-lg md:text-xl font-bold truncate">{quiz.title}</h1>
+              <h1 className="text-base sm:text-lg md:text-xl font-bold truncate">{quiz.title}</h1>
             </div>
-            <div className="flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-quiz-secondary rounded-full text-quiz-primary text-sm md:text-base font-medium">
-              <svg className="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
+            <div className="flex items-center self-start sm:self-auto px-2 sm:px-3 py-1 sm:py-1.5 md:px-4 md:py-2 bg-quiz-secondary rounded-full text-quiz-primary text-xs sm:text-sm md:text-base font-medium">
+              <Clock className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 md:mr-2" />
               {formatTime(timeLeft)}
             </div>
           </div>
           
-          {/* Progress Bar */}
           <ProgressBar current={currentQuestion + 1} total={quiz.questions.length} />
           
-          {/* Question Content */}
-          <div className="mb-4 md:mb-6 animate-fade-in">
-            <h2 className="text-base md:text-lg font-medium mb-3 md:mb-4">
+          <div className="mb-3 sm:mb-4 md:mb-6 animate-fade-in">
+            <h2 className="text-sm sm:text-base md:text-lg font-medium mb-2 sm:mb-3 md:mb-4">
               {currentQuestion + 1}. {question.text}
             </h2>
             
@@ -186,7 +179,7 @@ const QuizInterface: React.FC = () => {
                       )}
                     </div>
                     <div className="ml-3 flex-1">
-                      <span className="text-sm md:text-base">{option.id}. {option.text}</span>
+                      <span className="text-xs sm:text-sm md:text-base">{option.id}. {option.text}</span>
                     </div>
                   </div>
                 </div>
@@ -194,9 +187,8 @@ const QuizInterface: React.FC = () => {
             </div>
           </div>
           
-          {/* Explanation when answer is shown */}
           {showAnswer && (
-            <div className="mt-4 mb-6 p-3 md:p-4 bg-quiz-secondary/50 rounded-xl text-sm md:text-base">
+            <div className="mt-3 sm:mt-4 mb-4 sm:mb-6 p-2 sm:p-3 md:p-4 bg-quiz-secondary/50 rounded-lg sm:rounded-xl text-xs sm:text-sm md:text-base">
               <div className="font-medium mb-1 md:mb-2">Explanation:</div>
               <div className="text-quiz-dark text-xs md:text-sm">
                 {question.explanation || "No explanation provided for this question."}
@@ -204,12 +196,11 @@ const QuizInterface: React.FC = () => {
             </div>
           )}
           
-          {/* Navigation Buttons */}
-          <div className="flex justify-between mt-6 md:mt-8">
+          <div className="flex justify-between mt-4 sm:mt-6 md:mt-8">
             <button 
               onClick={handlePrev}
               disabled={currentQuestion === 0}
-              className={`px-4 md:px-6 py-2 md:py-2.5 text-sm md:text-base rounded-lg font-medium transition-all duration-200 ${currentQuestion === 0 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-quiz-secondary text-quiz-dark hover:bg-quiz-secondary/80'}`}
+              className={`px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-2.5 text-xs sm:text-sm md:text-base rounded-lg font-medium transition-all duration-200 ${currentQuestion === 0 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-quiz-secondary text-quiz-dark hover:bg-quiz-secondary/80'}`}
             >
               Previous
             </button>
@@ -217,22 +208,21 @@ const QuizInterface: React.FC = () => {
             {currentQuestion < quiz.questions.length - 1 ? (
               <button 
                 onClick={handleNext}
-                className="bg-quiz-primary text-white px-4 md:px-6 py-2 md:py-2.5 text-sm md:text-base rounded-lg font-medium hover:bg-quiz-primary/90 transition-all duration-200"
+                className="bg-quiz-primary text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-2.5 text-xs sm:text-sm md:text-base rounded-lg font-medium hover:bg-quiz-primary/90 transition-all duration-200"
               >
                 Next
               </button>
             ) : (
               <button 
                 onClick={handleSubmit}
-                className="bg-quiz-primary text-white px-4 md:px-6 py-2 md:py-2.5 text-sm md:text-base rounded-lg font-medium hover:bg-quiz-primary/90 transition-all duration-200"
+                className="bg-quiz-primary text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-2.5 text-xs sm:text-sm md:text-base rounded-lg font-medium hover:bg-quiz-primary/90 transition-all duration-200"
               >
-                Submit Quiz
+                Submit
               </button>
             )}
           </div>
           
-          {/* Question Navigator */}
-          <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-gray-100">
+          <div className="mt-4 sm:mt-6 md:mt-8 pt-3 sm:pt-4 md:pt-6 border-t border-gray-100">
             {!isMobile ? (
               <div className="flex flex-wrap gap-2">
                 {quiz.questions.map((_, index) => (
@@ -265,7 +255,7 @@ const QuizInterface: React.FC = () => {
                       setSelectedOption(answers[index] || null);
                       setShowAnswer(!!answers[index]);
                     }}
-                    className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full text-xs transition-all duration-200 ${
+                    className={`flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full text-xs transition-all duration-200 ${
                       currentQuestion === index 
                         ? 'bg-quiz-primary text-white' 
                         : answers[index] 
@@ -282,20 +272,19 @@ const QuizInterface: React.FC = () => {
         </div>
       </div>
 
-      {/* Cancel Confirmation Dialog */}
       <Dialog open={showCancelDialog} onOpenChange={setShowCancelDialog}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px] p-4 sm:p-6">
           <DialogHeader>
-            <DialogTitle>Cancel Quiz</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-base sm:text-lg">Cancel Quiz</DialogTitle>
+            <DialogDescription className="text-sm">
               Are you sure you want to cancel this quiz? Your progress will not be saved.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="flex space-x-2 pt-4">
-            <Button variant="outline" onClick={() => setShowCancelDialog(false)}>
+            <Button variant="outline" onClick={() => setShowCancelDialog(false)} className="text-xs sm:text-sm">
               Continue Quiz
             </Button>
-            <Button variant="destructive" onClick={confirmCancel}>
+            <Button variant="destructive" onClick={confirmCancel} className="text-xs sm:text-sm">
               Exit Quiz
             </Button>
           </DialogFooter>
