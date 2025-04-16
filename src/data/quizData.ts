@@ -208,7 +208,6 @@ export const awsCloudPractitionerQuiz: Quiz = {
       correctAnswer: "B",
       explanation: "Decoupling reduces dependencies between components, preventing failures from cascading through the entire application."
     },
-    // Adding more questions to reach total of 50
     {
       id: 16,
       text: "Which of the following helps a customer view the Amazon EC2 billing activity for the past month?",
@@ -271,7 +270,6 @@ export const awsCloudPractitionerQuiz: Quiz = {
       correctAnswer: "A,C",
       explanation: "CloudWatch billing alarms (A) and AWS Budgets (C) can be configured to send notifications when billing thresholds are exceeded."
     },
-    // Adding the remaining questions from 21-50
     {
       id: 21,
       text: "What does Amazon CloudFront use to distribute content to global users with low latency?",
@@ -609,4 +607,105 @@ export const awsCloudPractitionerQuiz: Quiz = {
         { id: "A", text: "Disk disposal." },
         { id: "B", text: "Controlling physical access to compute resources." },
         { id: "C", text: "Patching the Network infrastructure." },
-        { id: "D", text: "
+        { id: "D", text: "Filtering traffic with Security Groups." }
+      ],
+      correctAnswer: "B,D",
+      explanation: "The customer is responsible for controlling physical access to compute resources (B) and filtering traffic with Security Groups (D)."
+    },
+    {
+      id: 49,
+      text: "Which AWS service helps identify malicious or unauthorized activities in AWS accounts and workloads?",
+      options: [
+        { id: "A", text: "Amazon Rekognition" },
+        { id: "B", text: "AWS Trusted Advisor" },
+        { id: "C", text: "Amazon GuardDuty" },
+        { id: "D", text: "Amazon CloudWatch" }
+      ],
+      correctAnswer: "C",
+      explanation: "Amazon GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior to protect your AWS accounts and workloads."
+    },
+    {
+      id: 50,
+      text: "A company wants to try a third-party ecommerce solution before deciding to use it long term. Which AWS service or tool will support this effort?",
+      options: [
+        { id: "A", text: "AWS Marketplace" },
+        { id: "B", text: "AWS Partner Network (APN)" },
+        { id: "C", text: "AWS Managed Services" },
+        { id: "D", text: "AWS Service Catalog" }
+      ],
+      correctAnswer: "A",
+      explanation: "AWS Marketplace is a digital catalog with thousands of software listings from independent software vendors that makes it easy to find, test, buy, and deploy software that runs on AWS."
+    }
+  ]
+};
+
+export const awsCloudPractitionerQuiz2: Quiz = {
+  id: "aws-ccp-2",
+  title: "AWS Certified Cloud Practitioner - Practice Exam 2",
+  description: "Practice Exam 2 - Test your knowledge of AWS Cloud concepts, services, and the AWS global infrastructure.",
+  timeLimit: 90,
+  questions: [
+    {
+      id: 1,
+      text: "Which AWS service helps identify malicious or unauthorized activities in AWS accounts and workloads?",
+      options: [
+        { id: "A", text: "Amazon Rekognition" },
+        { id: "B", text: "AWS Trusted Advisor" },
+        { id: "C", text: "Amazon GuardDuty" },
+        { id: "D", text: "Amazon CloudWatch" }
+      ],
+      correctAnswer: "C",
+      explanation: "Amazon GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior to protect your AWS accounts and workloads."
+    },
+    {
+      id: 2,
+      text: "A company wants to try a third-party ecommerce solution before deciding to use it long term. Which AWS service or tool will support this effort?",
+      options: [
+        { id: "A", text: "AWS Marketplace" },
+        { id: "B", text: "AWS Partner Network (APN)" },
+        { id: "C", text: "AWS Managed Services" },
+        { id: "D", text: "AWS Service Catalog" }
+      ],
+      correctAnswer: "A",
+      explanation: "AWS Marketplace is a digital catalog with thousands of software listings from independent software vendors that makes it easy to find, test, buy, and deploy software that runs on AWS."
+    },
+    {
+      id: 3,
+      text: "Which AWS service is a managed NoSQL database?",
+      options: [
+        { id: "A", text: "Amazon Redshift" },
+        { id: "B", text: "Amazon DynamoDB" },
+        { id: "C", text: "Amazon Aurora" },
+        { id: "D", text: "Amazon RDS for MariaDB" }
+      ],
+      correctAnswer: "B",
+      explanation: "Amazon DynamoDB is a key-value and document database that delivers single-digit millisecond performance at any scale. It's a fully managed, multiregion, multimaster, durable NoSQL database."
+    },
+    {
+      id: 4,
+      text: "Which AWS service should be used to create a billing alarm?",
+      options: [
+        { id: "A", text: "AWS Trusted Advisor" },
+        { id: "B", text: "AWS CloudTrail" },
+        { id: "C", text: "Amazon CloudWatch" },
+        { id: "D", text: "Amazon QuickSight" }
+      ],
+      correctAnswer: "C",
+      explanation: "Amazon CloudWatch can be used to create billing alarms that watch for estimated charges and send a notification when a specified threshold is exceeded."
+    },
+    {
+      id: 5,
+      text: "A company is hosting a web application in a Docker container on Amazon EC2. AWS is responsible for which of the following tasks?",
+      options: [
+        { id: "A", text: "Scaling the web application and services developed with Docker" },
+        { id: "B", text: "Provisioning or scheduling containers to run on clusters and maintain their availability" },
+        { id: "C", text: "Performing hardware maintenance in the AWS facilities that run the AWS Cloud" },
+        { id: "D", text: "Managing the guest operating system, including updates and security patches" }
+      ],
+      correctAnswer: "C",
+      explanation: "Under the AWS shared responsibility model, AWS is responsible for the infrastructure that runs all of the services offered in the AWS Cloud, which includes hardware maintenance in AWS facilities."
+    }
+  ]
+};
+
+export const quizzes = [awsCloudPractitionerQuiz, awsCloudPractitionerQuiz2];
