@@ -708,4 +708,135 @@ export const awsCloudPractitionerQuiz2: Quiz = {
   ]
 };
 
-export const quizzes = [awsCloudPractitionerQuiz, awsCloudPractitionerQuiz2];
+export const awsCloudPractitionerQuiz3: Quiz = {
+  id: "aws-ccp-3",
+  title: "AWS Certified Cloud Practitioner - Practice Exam 3",
+  description: "Practice Exam 3 - Comprehensive exam covering AWS services, security, and cloud concepts for the Cloud Practitioner certification.",
+  timeLimit: 90,
+  questions: [
+    {
+      id: 1,
+      text: "Which AWS service helps identify malicious or unauthorized activities in AWS accounts and workloads?",
+      options: [
+        { id: "A", text: "Amazon Rekognition" },
+        { id: "B", text: "AWS Trusted Advisor" },
+        { id: "C", text: "Amazon GuardDuty" },
+        { id: "D", text: "Amazon CloudWatch" }
+      ],
+      correctAnswer: "C",
+      explanation: "Amazon GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior to protect your AWS accounts and workloads."
+    },
+    {
+      id: 2,
+      text: "A company wants to try a third-party ecommerce solution before deciding to use it long term. Which AWS service or tool will support this effort?",
+      options: [
+        { id: "A", text: "AWS Marketplace" },
+        { id: "B", text: "AWS Partner Network (APN)" },
+        { id: "C", text: "AWS Managed Services" },
+        { id: "D", text: "AWS Service Catalog" }
+      ],
+      correctAnswer: "A",
+      explanation: "AWS Marketplace is a digital catalog with thousands of software listings from independent software vendors that makes it easy to find, test, buy, and deploy software that runs on AWS."
+    },
+    {
+      id: 3,
+      text: "Which AWS service is a managed NoSQL database?",
+      options: [
+        { id: "A", text: "Amazon Redshift" },
+        { id: "B", text: "Amazon DynamoDB" },
+        { id: "C", text: "Amazon Aurora" },
+        { id: "D", text: "Amazon RDS for MariaDB" }
+      ],
+      correctAnswer: "B",
+      explanation: "Amazon DynamoDB is a key-value and document database that delivers single-digit millisecond performance at any scale. It's a fully managed, multiregion, multimaster, durable NoSQL database."
+    },
+    {
+      id: 4,
+      text: "Which AWS service should be used to create a billing alarm?",
+      options: [
+        { id: "A", text: "AWS Trusted Advisor" },
+        { id: "B", text: "AWS CloudTrail" },
+        { id: "C", text: "Amazon CloudWatch" },
+        { id: "D", text: "Amazon QuickSight" }
+      ],
+      correctAnswer: "C",
+      explanation: "Amazon CloudWatch can be used to create billing alarms that watch for estimated charges and send a notification when a specified threshold is exceeded."
+    },
+    {
+      id: 5,
+      text: "A company is hosting a web application in a Docker container on Amazon EC2. AWS is responsible for which of the following tasks?",
+      options: [
+        { id: "A", text: "Scaling the web application and services developed with Docker" },
+        { id: "B", text: "Provisioning or scheduling containers to run on clusters and maintain their availability" },
+        { id: "C", text: "Performing hardware maintenance in the AWS facilities that run the AWS Cloud" },
+        { id: "D", text: "Managing the guest operating system, including updates and security patches" }
+      ],
+      correctAnswer: "C",
+      explanation: "Under the AWS shared responsibility model, AWS is responsible for the infrastructure that runs all of the services offered in the AWS Cloud, which includes hardware maintenance in AWS facilities."
+    },
+    {
+      id: 6,
+      text: "Users are reporting latency when connecting to a website with a global customer base. Which AWS service will improve the customer experience by reducing latency?",
+      options: [
+        { id: "A", text: "Amazon CloudFront" },
+        { id: "B", text: "AWS Direct Connect" },
+        { id: "C", text: "Amazon EC2 Auto Scaling" },
+        { id: "D", text: "AWS Transit Gateway" }
+      ],
+      correctAnswer: "A",
+      explanation: "Amazon CloudFront is a content delivery network service that speeds up distribution of your static and dynamic web content to end users by caching content at edge locations worldwide, resulting in reduced latency."
+    },
+    {
+      id: 7,
+      text: "Which actions represent best practices for using AWS IAM? (Choose two.)",
+      options: [
+        { id: "A", text: "Configure a strong password policy" },
+        { id: "B", text: "Share the security credentials among users of AWS accounts who are in the same Region" },
+        { id: "C", text: "Use access keys to log in to the AWS Management Console" },
+        { id: "D", text: "Rotate access keys on a regular basis" },
+        { id: "E", text: "Avoid using IAM roles to delegate permissions" }
+      ],
+      correctAnswer: "A,D",
+      explanation: "Configuring a strong password policy (A) and rotating access keys regularly (D) are best practices for AWS IAM security."
+    },
+    {
+      id: 8,
+      text: "Which AWS feature or service can be used to capture information about incoming and outgoing traffic in an AWS VPC infrastructure?",
+      options: [
+        { id: "A", text: "AWS Config" },
+        { id: "B", text: "VPC Flow Logs" },
+        { id: "C", text: "AWS Trusted Advisor" },
+        { id: "D", text: "AWS CloudTrail" }
+      ],
+      correctAnswer: "B",
+      explanation: "VPC Flow Logs is a feature that enables you to capture information about the IP traffic going to and from network interfaces in your VPC."
+    },
+    {
+      id: 9,
+      text: "A company wants to use an AWS service to monitor the health of application endpoints, with the ability to route traffic to healthy regional endpoints to improve application availability. Which service will support these requirements?",
+      options: [
+        { id: "A", text: "Amazon Inspector" },
+        { id: "B", text: "Amazon CloudWatch" },
+        { id: "C", text: "AWS Global Accelerator" },
+        { id: "D", text: "Amazon CloudFront" }
+      ],
+      correctAnswer: "C",
+      explanation: "AWS Global Accelerator continuously monitors the health of your application endpoints and redirects traffic to healthy endpoints in less than 30 seconds."
+    },
+    {
+      id: 10,
+      text: "According to the AWS Well-Architected Framework, what change management steps should be taken to achieve reliability in the AWS Cloud? (Choose two.)",
+      options: [
+        { id: "A", text: "Use AWS Config to generate an inventory of AWS resources" },
+        { id: "B", text: "Use service limits to prevent users from creating or making changes to AWS resources" },
+        { id: "C", text: "Use AWS CloudTrail to record AWS API calls into an auditable log file" },
+        { id: "D", text: "Use AWS Certificate Manager to whitelist approved AWS resources and services" },
+        { id: "E", text: "Use Amazon GuardDuty to validate configuration changes made to AWS resources" }
+      ],
+      correctAnswer: "A,C",
+      explanation: "Using AWS Config to track resources (A) and AWS CloudTrail to record API calls (C) are key change management practices for reliability in the AWS Cloud."
+    }
+  ]
+};
+
+export const quizzes = [awsCloudPractitionerQuiz, awsCloudPractitionerQuiz2, awsCloudPractitionerQuiz3];
