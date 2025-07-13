@@ -1875,6 +1875,624 @@ export const awsCloudPractitionerQuiz3: Quiz = {
     }
   ]
 };
+export const awsCloudPractitionerQuiz4: Quiz = {
+  id: "aws-ccp-4",
+  title: "AWS Certified Cloud Practitioner - Practice Exam 4",
+  description: "Practice Exam 4 - Test your knowledge of AWS Cloud concepts, services, and the AWS global infrastructure.",
+  timeLimit: 90,
+  questions: [
+    {
+      id: 1,
+      text: "A developer needs to set up an SSL security certificate for a client's eCommerce website in order to use the HTTPS protocol. Which of the following AWS services can be used to deploy the required SSL server certificates? (Choose TWO)",
+      options: [
+        { id: "A", text: "Amazon Route 53." },
+        { id: "B", text: "AWS ACM." },
+        { id: "C", text: "AWS Directory Service." },
+        { id: "D", text: "AWS Identity & Access Management." },
+        { id: "E", text: "AWS Data Pipeline." }
+      ],
+      correctAnswer: "A,B",
+      explanation: "AWS Certificate Manager (ACM) and Amazon Route 53 are used to deploy SSL certificates."
+    },
+    {
+      id: 2,
+      text: "Which of the following AWS services scale automatically without your intervention? (Choose TWO)",
+      options: [
+        { id: "A", text: "Amazon EC2." },
+        { id: "B", text: "Amazon S3." },
+        { id: "C", text: "AWS Lambda." },
+        { id: "D", text: "Amazon EMR." },
+        { id: "E", text: "Amazon EBS." }
+      ],
+      correctAnswer: "B,C",
+      explanation: "Amazon S3 and AWS Lambda scale automatically."
+    },
+    {
+      id: 3,
+      text: "A company is planning to migrate an application from Amazon EC2 to AWS Lambda to use a serverless architecture. Which of the following will be the responsibility of AWS after migration? (Choose TWO)",
+      options: [
+        { id: "A", text: "Application management." },
+        { id: "B", text: "Capacity management." },
+        { id: "C", text: "Access control." },
+        { id: "D", text: "Operating system maintenance." },
+        { id: "E", text: "Data management." }
+      ],
+      correctAnswer: "B,D",
+      explanation: "AWS manages capacity and OS maintenance for Lambda."
+    },
+    {
+      id: 4,
+      text: "How do ELBs improve the reliability of your application?",
+      options: [
+        { id: "A", text: "By distributing traffic across multiple S3 buckets." },
+        { id: "B", text: "By replicating data to multiple availability zones." },
+        { id: "C", text: "By creating database Read Replicas." },
+        { id: "D", text: "By ensuring that only healthy targets receive traffic." }
+      ],
+      correctAnswer: "D",
+      explanation: "ELB only routes traffic to healthy targets, improving reliability."
+    },
+    {
+      id: 5,
+      text: "A company needs to migrate their website from on-premises to AWS. Security is a major concern for them, so they need to host their website on hardware that is NOT shared with other AWS customers. Which of the following EC2 instance options meets this requirement?",
+      options: [
+        { id: "A", text: "On-demand instances." },
+        { id: "B", text: "Spot instances." },
+        { id: "C", text: "Dedicated instances." },
+        { id: "D", text: "Reserved instances." }
+      ],
+      correctAnswer: "C",
+      explanation: "Dedicated instances run on hardware not shared with other customers."
+    },
+    {
+      id: 6,
+      text: "A customer is planning to move billions of images and videos to be stored on Amazon S3. The customer has approximately 60 Petabytes of data to move. Which of the following AWS Services is the best choice to transfer the data to AWS?",
+      options: [
+        { id: "A", text: "Snowball." },
+        { id: "B", text: "S3 Transfer Acceleration." },
+        { id: "C", text: "Snowmobile." },
+        { id: "D", text: "Amazon VPC." }
+      ],
+      correctAnswer: "C",
+      explanation: "Snowmobile is designed for exabyte-scale data transfer."
+    },
+    {
+      id: 7,
+      text: "A company plans to migrate a large amount of archived data to AWS. The archived data must be maintained for a period of 5 years and must be retrievable within 5 hours of a request. What is the most cost-effective AWS storage service to use?",
+      options: [
+        { id: "A", text: "Amazon S3 Glacier." },
+        { id: "B", text: "Amazon EFS." },
+        { id: "C", text: "Amazon S3 Standard." },
+        { id: "D", text: "Amazon EBS." }
+      ],
+      correctAnswer: "A",
+      explanation: "S3 Glacier is designed for long-term, infrequently accessed data."
+    },
+    {
+      id: 8,
+      text: "Which AWS Service is used to manage user permissions?",
+      options: [
+        { id: "A", text: "Security Groups." },
+        { id: "B", text: "Amazon ECS." },
+        { id: "C", text: "AWS IAM." },
+        { id: "D", text: "AWS Support." }
+      ],
+      correctAnswer: "C",
+      explanation: "AWS IAM manages user permissions."
+    },
+    {
+      id: 9,
+      text: "Which AWS service allows you to run code without provisioning or managing servers?",
+      options: [
+        { id: "A", text: "Amazon EC2." },
+        { id: "B", text: "AWS Lambda." },
+        { id: "C", text: "Amazon S3." },
+        { id: "D", text: "Amazon EBS." }
+      ],
+      correctAnswer: "B",
+      explanation: "AWS Lambda is a serverless compute service."
+    },
+    {
+      id: 10,
+      text: "Which AWS service is specifically designed to help you migrate databases to AWS easily and securely?",
+      options: [
+        { id: "A", text: "AWS Database Migration Service (DMS)." },
+        { id: "B", text: "AWS Data Pipeline." },
+        { id: "C", text: "AWS Glue." },
+        { id: "D", text: "AWS CloudFormation." }
+      ],
+      correctAnswer: "A",
+      explanation: "AWS DMS is designed for database migration."
+    },
+    {
+      id: 11,
+      text: "Which AWS service provides a fully managed NoSQL database?",
+      options: [
+        { id: "A", text: "Amazon RDS." },
+        { id: "B", text: "Amazon DynamoDB." },
+        { id: "C", text: "Amazon Redshift." },
+        { id: "D", text: "Amazon Aurora." }
+      ],
+      correctAnswer: "B",
+      explanation: "DynamoDB is AWS's managed NoSQL database service."
+    },
+    {
+      id: 12,
+      text: "Which of the following AWS services allows you to run containerized applications?",
+      options: [
+        { id: "A", text: "Amazon ECS." },
+        { id: "B", text: "Amazon S3." },
+        { id: "C", text: "AWS Lambda." },
+        { id: "D", text: "Amazon RDS." }
+      ],
+      correctAnswer: "A",
+      explanation: "ECS is AWS's managed container orchestration service."
+    },
+    {
+      id: 13,
+      text: "Which AWS service automatically distributes incoming application traffic across multiple targets?",
+      options: [
+        { id: "A", text: "Amazon CloudFront." },
+        { id: "B", text: "AWS ELB." },
+        { id: "C", text: "Amazon Route 53." },
+        { id: "D", text: "AWS Auto Scaling." }
+      ],
+      correctAnswer: "B",
+      explanation: "ELB (Elastic Load Balancer) distributes traffic across targets."
+    },
+    {
+      id: 14,
+      text: "Which AWS service is used for object storage?",
+      options: [
+        { id: "A", text: "Amazon EBS." },
+        { id: "B", text: "Amazon EFS." },
+        { id: "C", text: "Amazon S3." },
+        { id: "D", text: "Amazon RDS." }
+      ],
+      correctAnswer: "C",
+      explanation: "S3 is AWS's object storage service."
+    },
+    {
+      id: 15,
+      text: "Which AWS service enables you to decouple microservices, distributed systems, and serverless applications?",
+      options: [
+        { id: "A", text: "Amazon SQS." },
+        { id: "B", text: "Amazon RDS." },
+        { id: "C", text: "Amazon EBS." },
+        { id: "D", text: "Amazon EC2." }
+      ],
+      correctAnswer: "A",
+      explanation: "SQS (Simple Queue Service) is used for decoupling components."
+    },
+    {
+      id: 16,
+      text: "Which AWS service is used for content delivery and caching?",
+      options: [
+        { id: "A", text: "Amazon Route 53." },
+        { id: "B", text: "Amazon CloudFront." },
+        { id: "C", text: "Amazon S3." },
+        { id: "D", text: "AWS Lambda." }
+      ],
+      correctAnswer: "B",
+      explanation: "CloudFront is AWS's content delivery network (CDN)."
+    },
+    {
+      id: 17,
+      text: "Which AWS service helps you monitor AWS resources and applications in real time?",
+      options: [
+        { id: "A", text: "AWS CloudTrail." },
+        { id: "B", text: "Amazon CloudWatch." },
+        { id: "C", text: "AWS Inspector." },
+        { id: "D", text: "AWS Lambda." }
+      ],
+      correctAnswer: "B",
+      explanation: "Amazon CloudWatch monitors resources and applications."
+    },
+    {
+      id: 18,
+      text: "Which AWS service is used for managing infrastructure as code?",
+      options: [
+        { id: "A", text: "AWS CloudFormation." },
+        { id: "B", text: "Amazon EC2." },
+        { id: "C", text: "AWS Glue." },
+        { id: "D", text: "Amazon EMR." }
+      ],
+      correctAnswer: "A",
+      explanation: "CloudFormation manages infrastructure as code."
+    },
+    {
+      id: 19,
+      text: "Which AWS service helps you analyze and visualize data?",
+      options: [
+        { id: "A", text: "Amazon Redshift." },
+        { id: "B", text: "Amazon Athena." },
+        { id: "C", text: "Amazon QuickSight." },
+        { id: "D", text: "Amazon Glue." }
+      ],
+      correctAnswer: "C",
+      explanation: "QuickSight is AWS's data visualization service."
+    },
+    {
+      id: 20,
+      text: "Which AWS service enables you to register a domain name?",
+      options: [
+        { id: "A", text: "Amazon CloudFront." },
+        { id: "B", text: "Amazon Route 53." },
+        { id: "C", text: "Amazon S3." },
+        { id: "D", text: "AWS Lambda." }
+      ],
+      correctAnswer: "B",
+      explanation: "Route 53 allows domain registration."
+    },
+    {
+      id: 21,
+      text: "Which AWS service is used to run Microsoft Windows applications in the cloud?",
+      options: [
+        { id: "A", text: "Amazon EC2." },
+        { id: "B", text: "Amazon S3." },
+        { id: "C", text: "Amazon RDS." },
+        { id: "D", text: "AWS Lambda." }
+      ],
+      correctAnswer: "A",
+      explanation: "EC2 can run Microsoft Windows server instances."
+    },
+    {
+      id: 22,
+      text: "Which AWS service helps you automate software deployments to a variety of compute services like Amazon EC2, AWS Lambda, and instances running on-premises?",
+      options: [
+        { id: "A", text: "AWS CodePipeline." },
+        { id: "B", text: "AWS CodeDeploy." },
+        { id: "C", text: "AWS CodeBuild." },
+        { id: "D", text: "AWS CodeCommit." }
+      ],
+      correctAnswer: "B",
+      explanation: "AWS CodeDeploy automates software deployments."
+    },
+    {
+      id: 23,
+      text: "Which AWS service enables you to track user activity and API usage?",
+      options: [
+        { id: "A", text: "AWS CloudTrail." },
+        { id: "B", text: "Amazon CloudWatch." },
+        { id: "C", text: "AWS Inspector." },
+        { id: "D", text: "AWS Glue." }
+      ],
+      correctAnswer: "A",
+      explanation: "CloudTrail tracks user activity and API usage."
+    },
+    {
+      id: 24,
+      text: "Which AWS service is designed to simplify setting up, operating, and scaling a relational database in the cloud?",
+      options: [
+        { id: "A", text: "Amazon RDS." },
+        { id: "B", text: "Amazon DynamoDB." },
+        { id: "C", text: "Amazon Redshift." },
+        { id: "D", text: "Amazon S3." }
+      ],
+      correctAnswer: "A",
+      explanation: "RDS is AWS's managed relational database service."
+    },
+    {
+      id: 25,
+      text: "Which AWS service is used to run queries on data stored in S3 using standard SQL?",
+      options: [
+        { id: "A", text: "Amazon Redshift." },
+        { id: "B", text: "Amazon Athena." },
+        { id: "C", text: "Amazon EMR." },
+        { id: "D", text: "Amazon Kinesis." }
+      ],
+      correctAnswer: "B",
+      explanation: "Athena lets you run SQL queries on S3 data."
+    },
+    {
+      id: 26,
+      text: "Which AWS service helps you protect your web applications from common web exploits?",
+      options: [
+        { id: "A", text: "AWS Shield." },
+        { id: "B", text: "AWS Firewall Manager." },
+        { id: "C", text: "AWS WAF." },
+        { id: "D", text: "Amazon GuardDuty." }
+      ],
+      correctAnswer: "C",
+      explanation: "AWS WAF is a web application firewall."
+    },
+    {
+      id: 27,
+      text: "Which AWS service provides a scalable file storage solution for use with Amazon EC2?",
+      options: [
+        { id: "A", text: "Amazon S3." },
+        { id: "B", text: "Amazon EFS." },
+        { id: "C", text: "Amazon Glacier." },
+        { id: "D", text: "Amazon RDS." }
+      ],
+      correctAnswer: "B",
+      explanation: "Amazon Elastic File System (EFS) is scalable file storage for EC2."
+    },
+    {
+      id: 28,
+      text: "Which AWS service is a managed distributed database that supports document and key-value store models?",
+      options: [
+        { id: "A", text: "Amazon RDS." },
+        { id: "B", text: "Amazon DynamoDB." },
+        { id: "C", text: "Amazon Redshift." },
+        { id: "D", text: "Amazon ElastiCache." }
+      ],
+      correctAnswer: "B",
+      explanation: "DynamoDB supports document and key-value models."
+    },
+    {
+      id: 29,
+      text: "Which AWS service can be used to automate the provisioning of AWS resources?",
+      options: [
+        { id: "A", text: "Amazon CloudWatch." },
+        { id: "B", text: "AWS CloudFormation." },
+        { id: "C", text: "Amazon S3." },
+        { id: "D", text: "AWS Lambda." }
+      ],
+      correctAnswer: "B",
+      explanation: "CloudFormation automates AWS resource provisioning."
+    },
+    {
+      id: 30,
+      text: "Which AWS service provides a fully managed extract, transform, and load (ETL) service?",
+      options: [
+        { id: "A", text: "AWS Glue." },
+        { id: "B", text: "Amazon Athena." },
+        { id: "C", text: "Amazon EMR." },
+        { id: "D", text: "Amazon Redshift." }
+      ],
+      correctAnswer: "A",
+      explanation: "AWS Glue is a managed ETL service."
+    },
+    {
+      id: 31,
+      text: "Which service lets you easily provision a variety of AWS resources, such as EC2 instances, RDS databases, and S3 buckets, using a web-based interface?",
+      options: [
+        { id: "A", text: "AWS Management Console." },
+        { id: "B", text: "AWS CLI." },
+        { id: "C", text: "AWS CloudFormation." },
+        { id: "D", text: "AWS SDK." }
+      ],
+      correctAnswer: "A",
+      explanation: "AWS Management Console is the web-based UI for resource provisioning."
+    },
+    {
+      id: 32,
+      text: "Which AWS service helps you identify security vulnerabilities in your AWS environment?",
+      options: [
+        { id: "A", text: "AWS Shield." },
+        { id: "B", text: "Amazon Inspector." },
+        { id: "C", text: "AWS WAF." },
+        { id: "D", text: "AWS CloudTrail." }
+      ],
+      correctAnswer: "B",
+      explanation: "Amazon Inspector scans for security vulnerabilities."
+    },
+    {
+      id: 33,
+      text: "Which AWS service is used to send notifications to subscribers?",
+      options: [
+        { id: "A", text: "Amazon SQS." },
+        { id: "B", text: "Amazon SNS." },
+        { id: "C", text: "AWS Lambda." },
+        { id: "D", text: "Amazon EC2." }
+      ],
+      correctAnswer: "B",
+      explanation: "SNS (Simple Notification Service) sends notifications to subscribers."
+    },
+    {
+      id: 34,
+      text: "What AWS service would you use to store and retrieve any amount of data at any time from anywhere on the web?",
+      options: [
+        { id: "A", text: "Amazon EFS." },
+        { id: "B", text: "Amazon EBS." },
+        { id: "C", text: "Amazon S3." },
+        { id: "D", text: "Amazon RDS." }
+      ],
+      correctAnswer: "C",
+      explanation: "S3 is designed for object storage and retrieval from anywhere."
+    },
+    {
+      id: 35,
+      text: "Which AWS service is designed to help you migrate large amounts of data into AWS using physical devices?",
+      options: [
+        { id: "A", text: "AWS Snowball." },
+        { id: "B", text: "AWS DataSync." },
+        { id: "C", text: "AWS DMS." },
+        { id: "D", text: "AWS Glue." }
+      ],
+      correctAnswer: "A",
+      explanation: "AWS Snowball uses physical devices for data transfer."
+    },
+    {
+      id: 36,
+      text: "Which AWS service is used to securely store and manage customer secrets such as database credentials and API keys?",
+      options: [
+        { id: "A", text: "AWS KMS." },
+        { id: "B", text: "AWS Secrets Manager." },
+        { id: "C", text: "Amazon CloudHSM." },
+        { id: "D", text: "AWS IAM." }
+      ],
+      correctAnswer: "B",
+      explanation: "Secrets Manager manages sensitive secrets."
+    },
+    {
+      id: 37,
+      text: "Which AWS service helps you monitor and manage your billing and usage?",
+      options: [
+        { id: "A", text: "AWS Budgets." },
+        { id: "B", text: "AWS Cost Explorer." },
+        { id: "C", text: "AWS CloudTrail." },
+        { id: "D", text: "AWS Config." }
+      ],
+      correctAnswer: "B",
+      explanation: "AWS Cost Explorer monitors billing and usage."
+    },
+    {
+      id: 38,
+      text: "Which AWS service enables you to establish a dedicated network connection from your premises to AWS?",
+      options: [
+        { id: "A", text: "AWS VPN." },
+        { id: "B", text: "AWS Direct Connect." },
+        { id: "C", text: "Amazon VPC." },
+        { id: "D", text: "AWS Transit Gateway." }
+      ],
+      correctAnswer: "B",
+      explanation: "Direct Connect establishes a dedicated network connection."
+    },
+    {
+      id: 39,
+      text: "Which AWS service provides a managed Hadoop framework to process vast amounts of data?",
+      options: [
+        { id: "A", text: "Amazon EMR." },
+        { id: "B", text: "Amazon Athena." },
+        { id: "C", text: "Amazon Redshift." },
+        { id: "D", text: "AWS Glue." }
+      ],
+      correctAnswer: "A",
+      explanation: "EMR is a managed Hadoop framework."
+    },
+    {
+      id: 40,
+      text: "Which AWS service would you use for serverless event-driven code execution?",
+      options: [
+        { id: "A", text: "Amazon EC2." },
+        { id: "B", text: "AWS Lambda." },
+        { id: "C", text: "Amazon ECS." },
+        { id: "D", text: "AWS Batch." }
+      ],
+      correctAnswer: "B",
+      explanation: "Lambda is for serverless event-driven code."
+    },
+    {
+      id: 41,
+      text: "Which AWS service allows you to easily provision, manage, and scale clusters of Elasticsearch?",
+      options: [
+        { id: "A", text: "Amazon Kinesis." },
+        { id: "B", text: "Amazon Elasticsearch Service." },
+        { id: "C", text: "Amazon EMR." },
+        { id: "D", text: "Amazon Redshift." }
+      ],
+      correctAnswer: "B",
+      explanation: "Amazon Elasticsearch Service provisions and manages Elasticsearch clusters."
+    },
+    {
+      id: 42,
+      text: "Which AWS service provides a managed message broker service for Apache ActiveMQ?",
+      options: [
+        { id: "A", text: "Amazon MQ." },
+        { id: "B", text: "Amazon SQS." },
+        { id: "C", text: "Amazon SNS." },
+        { id: "D", text: "Amazon Kinesis." }
+      ],
+      correctAnswer: "A",
+      explanation: "Amazon MQ is a managed message broker for ActiveMQ."
+    },
+    {
+      id: 43,
+      text: "Which AWS service helps you centralize and manage AWS accounts across your organization?",
+      options: [
+        { id: "A", text: "AWS IAM." },
+        { id: "B", text: "AWS Organizations." },
+        { id: "C", text: "AWS Directory Service." },
+        { id: "D", text: "AWS Control Tower." }
+      ],
+      correctAnswer: "B",
+      explanation: "AWS Organizations manages multiple AWS accounts."
+    },
+    {
+      id: 44,
+      text: "Which AWS service allows you to analyze VPC flow logs, CloudTrail logs, and other logs using SQL queries?",
+      options: [
+        { id: "A", text: "Amazon Athena." },
+        { id: "B", text: "Amazon Redshift." },
+        { id: "C", text: "Amazon QuickSight." },
+        { id: "D", text: "AWS Glue." }
+      ],
+      correctAnswer: "A",
+      explanation: "Athena lets you analyze logs using SQL queries."
+    },
+    {
+      id: 45,
+      text: "Which AWS service provides a way to set alarms and automate actions based on metrics?",
+      options: [
+        { id: "A", text: "Amazon CloudWatch." },
+        { id: "B", text: "AWS CloudTrail." },
+        { id: "C", text: "AWS Config." },
+        { id: "D", text: "AWS Lambda." }
+      ],
+      correctAnswer: "A",
+      explanation: "CloudWatch can set alarms and automate actions."
+    },
+    {
+      id: 46,
+      text: "Which AWS service provides automated security assessment of applications deployed on AWS?",
+      options: [
+        { id: "A", text: "AWS Shield." },
+        { id: "B", text: "Amazon Inspector." },
+        { id: "C", text: "AWS WAF." },
+        { id: "D", text: "AWS CloudTrail." }
+      ],
+      correctAnswer: "B",
+      explanation: "Inspector performs automated security assessments."
+    },
+    {
+      id: 47,
+      text: "Which AWS service allows you to quickly deploy and manage applications in the AWS Cloud without worrying about the underlying infrastructure?",
+      options: [
+        { id: "A", text: "AWS Lambda." },
+        { id: "B", text: "AWS Elastic Beanstalk." },
+        { id: "C", text: "Amazon ECS." },
+        { id: "D", text: "Amazon EC2." }
+      ],
+      correctAnswer: "B",
+      explanation: "Elastic Beanstalk manages deployment and infrastructure."
+    },
+    {
+      id: 48,
+      text: "Which AWS service is designed to help you implement multi-factor authentication (MFA)?",
+      options: [
+        { id: "A", text: "AWS CloudTrail." },
+        { id: "B", text: "AWS IAM." },
+        { id: "C", text: "AWS Config." },
+        { id: "D", text: "AWS KMS." }
+      ],
+      correctAnswer: "B",
+      explanation: "IAM allows you to implement MFA."
+    },
+    {
+      id: 49,
+      text: "Which AWS service lets you run SQL queries across data stored in relational, non-relational, object, and custom data sources?",
+      options: [
+        { id: "A", text: "Amazon Athena." },
+        { id: "B", text: "Amazon Redshift." },
+        { id: "C", text: "Amazon QuickSight." },
+        { id: "D", text: "AWS Glue." }
+      ],
+      correctAnswer: "C",
+      explanation: "QuickSight can query multiple data sources."
+    },
+    {
+      id: 50,
+      text: "Which AWS service enables you to automate the creation, deployment, and management of resources using templates?",
+      options: [
+        { id: "A", text: "AWS CloudFormation." },
+        { id: "B", text: "AWS CodeDeploy." },
+        { id: "C", text: "AWS Elastic Beanstalk." },
+        { id: "D", text: "AWS OpsWorks." }
+      ],
+      correctAnswer: "A",
+      explanation: "CloudFormation automates resource management with templates."
+    }
+  ]
+};
 
-export const quizzes = [awsCloudPractitionerQuiz, awsCloudPractitionerQuiz2, awsCloudPractitionerQuiz3];
+export const quizzes = [
+  awsCloudPractitionerQuiz,
+  awsCloudPractitionerQuiz2,
+  awsCloudPractitionerQuiz3,
+  awsCloudPractitionerQuiz4 // <-- add this line
+];
+
+//export const quizzes = [awsCloudPractitionerQuiz, awsCloudPractitionerQuiz2, awsCloudPractitionerQuiz3];
 
