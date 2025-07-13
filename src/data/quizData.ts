@@ -3114,7 +3114,7 @@ export const quizzes = [
   awsCloudPractitionerQuiz,
   awsCloudPractitionerQuiz2,
   awsCloudPractitionerQuiz3,
-  awsCloudPractitionerQuiz4 
+  awsCloudPractitionerQuiz4, 
   awsCloudPractitionerQuiz5// <-- add this line
 ];
 
