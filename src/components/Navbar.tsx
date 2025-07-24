@@ -44,27 +44,32 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
         scrolled
-          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md py-3 shadow-md"
-          : "bg-transparent py-5"
+          ? "py-3"
+          : "py-5"
       )}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link 
+      <div className={cn(
+        "transition-all duration-500 ease-out mx-auto flex items-center justify-between",
+        scrolled
+          ? "max-w-4xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 px-6 py-3 mt-4 animate-float-navbar hover:animate-glow-pulse"
+          : "container px-4"
+      )}>
+        <Link
           to="/" 
           className="flex items-center space-x-2 group"
           onClick={() => setIsMenuOpen(false)}
         >
           <div className="relative">
             <GraduationCap className={cn(
-              "w-8 h-8 transition-colors duration-300",
+              "w-8 h-8 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110",
               scrolled ? "text-quiz-primary" : "text-quiz-primary"
             )} />
-            <div className="absolute inset-0 bg-quiz-primary/20 rounded-full scale-0 group-hover:scale-125 transition-transform duration-300"></div>
+            <div className="absolute inset-0 bg-quiz-primary/20 rounded-full scale-0 group-hover:scale-125 transition-all duration-500 animate-pulse-ring"></div>
           </div>
           <span className={cn(
-            "font-bold text-xl tracking-tight transition-colors duration-300",
+            "font-bold text-xl tracking-tight transition-all duration-500 group-hover:text-quiz-primary",
             scrolled ? "text-quiz-dark" : "text-quiz-dark"
           )}>
             AWS Certify

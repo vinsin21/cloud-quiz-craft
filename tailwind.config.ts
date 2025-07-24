@@ -116,6 +116,14 @@ export default {
 					'0%': { transform: 'scale(0.95)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' }
 				},
+				'float-navbar': {
+					'0%': { transform: 'translateY(-20px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				'glow-pulse': {
+					'0%, 100%': { boxShadow: '0 0 20px rgba(0, 122, 255, 0.2)' },
+					'50%': { boxShadow: '0 0 30px rgba(0, 122, 255, 0.4)' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -125,6 +133,8 @@ export default {
 				'slide-up': 'slide-up 0.4s ease',
 				'slide-down': 'slide-down 0.4s ease',
 				'scale-in': 'scale-in 0.3s ease-out',
+				'float-navbar': 'float-navbar 0.6s ease-out',
+				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
 			}
 		}
 	},
