@@ -1,0 +1,42 @@
+name: Deploy Frontend to AWS S3
+
+on:
+  push:
+    branches:
+      - main # Trigger deployment only on pushes to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Required for OIDC authentication to AWS
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build application
+        run: npm run build
+
+      - name: Deploy to S3
+        # Syncs the build directory (dist) with the S3 bucket
+        run: aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET }} --delete
+
+      - name: Invalidate CloudFront Cache
+        # This ensures users see the new version immediately
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
