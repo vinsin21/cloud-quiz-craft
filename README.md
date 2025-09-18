@@ -43,7 +43,7 @@ This project demonstrates **production-grade frontend deployment** using modern 
 
 ## 🏗️ Architecture
 
-```
+``` markdownmermaid
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │   Developer     │───▶│  GitHub Actions  │───▶│   AWS Cloud     │
 │   (git push)    │    │     CI/CD        │    │                 │
@@ -297,7 +297,7 @@ Add these secrets in your GitHub repository settings:
 
 ## 📁 Project Structure
 
-```
+```js
 cloud-quiz-craft/
 ├── 📁 src/                          # React application source
 │   ├── 📁 components/               # Reusable UI components

@@ -1,0 +1,144 @@
+# Docker ignore file
+<!-- # Node.js dependencies -->
+
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+<!-- # Build outputs -->
+
+dist
+dist-ssr
+*.local
+
+<!-- # Environment files -->
+
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+<!-- # Editor directories and files -->
+
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+<!-- # Git -->
+
+.git
+.gitignore
+
+<!-- # Documentation -->
+
+README.md
+CHANGELOG.md
+LICENSE
+
+<!-- # Terraform files (Infrastructure as Code - not needed in app container) -->
+
+terraform/
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars.backup
+*.tfplan
+*.tfplan.*
+.terraformrc
+terraform.rc
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
+
+<!-- # Docker files -->
+
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+
+<!-- # CI/CD files -->
+
+.github/
+.gitlab-ci.yml
+.travis.yml
+Jenkinsfile
+
+<!-- # Testing -->
+
+coverage/
+.nyc_output
+.coverage
+*.lcov
+
+<!-- # Logs -->
+
+logs
+*.log
+
+<!-- # Runtime data -->
+
+pids
+*.pid
+*.seed
+*.pid.lock
+
+<!-- # Dependency directories -->
+
+jspm_packages/
+
+<!-- # Optional npm cache directory -->
+
+.npm
+
+<!-- # Optional REPL history -->
+
+.node_repl_history
+
+<!-- # Output of 'npm pack' -->
+
+*.tgz
+
+<!-- # Yarn Integrity file -->
+
+.yarn-integrity
+
+<!-- # parcel-bundler cache (<https://parceljs.org/>) -->
+
+.cache
+.parcel-cache
+
+<!-- # next.js build output -->
+
+.next
+
+<!-- # nuxt.js build output -->
+
+.nuxt
+
+<!-- # vuepress build output -->
+
+.vuepress/dist
+
+<!-- # Serverless directories -->
+
+.serverless
+
+<!-- # FuseBox cache -->
+
+.fusebox/
+
+<!-- # DynamoDB Local files -->
+
+.dynamodb/
