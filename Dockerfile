@@ -28,7 +28,7 @@ RUN addgroup -g 1001 -S nodejs && \
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
+#COPY nginx.conf /etc/nginx/nginx.conf
 
 # Change ownership of nginx files
 RUN chown -R nextjs:nodejs /usr/share/nginx/html && \
