@@ -9,8 +9,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies with clean install and no optional deps
-RUN npm ci --only=production --no-audit --no-fund
-
+# RUN npm ci --only=production --no-audit --no-fund  # beacuse vite is in dev dependecies but we need it  while building docker image
+RUN npm install --no-audit --no-fund
 # Copy source code
 COPY . .
 
